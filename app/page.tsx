@@ -35,7 +35,7 @@ export default function HomePage() {
         </div>
       )}
       {!loading && (
-        <div className="bg-[#f4e2d1]/40 backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
+        <div className="bg-[#f4e2d1]/20 backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
           {/* Avatar Section */}
           <Avatar />
 
