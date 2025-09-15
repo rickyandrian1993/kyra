@@ -6,21 +6,18 @@ import ContactInformation from "@/components/ContactInformation";
 import Product from "@/components/Product";
 import ShopButtons from "@/components/ShopButtons";
 import Whatsapp from "@/components/Whatsapp";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // if (loading) {
-  //   return <div>Welcome to Kyra Outwear</div>;
-  // }
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
@@ -31,19 +28,27 @@ export default function HomePage() {
         backgroundBlendMode: "lighten",
       }}
     >
-      <div className="bg-[#f4e2d1] backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
-        {/* Avatar Section */}
-        <Avatar />
+      {loading && (
+        <div className="min-h-screen flex flex-col items-center gap-8 justify-center p-4">
+          <div className="loader" />
+          Welcome to Kyra Outwear
+        </div>
+      )}
+      {!loading && (
+        <div className="bg-[#f4e2d1]/40 backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
+          {/* Avatar Section */}
+          <Avatar />
 
-        {/* Contact Information Section */}
-        <ContactInformation />
+          {/* Contact Information Section */}
+          <ContactInformation />
 
-        {/* Shop Buttons Section */}
-        <ShopButtons />
+          {/* Shop Buttons Section */}
+          <ShopButtons />
 
-        {/* Product Section */}
-        <Product />
-      </div>
+          {/* Product Section */}
+          <Product />
+        </div>
+      )}
 
       {/* WhatsApp Floating Button */}
       <Whatsapp />

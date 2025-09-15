@@ -13,10 +13,10 @@ export default function ContactInformation() {
 
   return (
     <div className="flex justify-center align-middle space-x-6 m-4 text-black-600">
-      <button className="text-lg" onClick={openInstagram}>
+      <button className="text-lg hover:cursor-pointer" onClick={openInstagram}>
         <FaInstagram />
       </button>
-      <button className="text-lg" onClick={openTikTok}>
+      <button className="text-lg hover:cursor-pointer" onClick={openTikTok}>
         <FaTiktok />
       </button>
     </div>

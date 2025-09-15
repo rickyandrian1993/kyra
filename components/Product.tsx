@@ -2,7 +2,7 @@
 
 import { affiliateLinks } from "@/data/affiliateLinks";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "./Search";
 
 const ITEMS_PER_PAGE = 6;
@@ -12,9 +12,11 @@ export default function Product() {
   const [search, setSearch] = useState("");
 
   // 🔍 Apply search filter first
-  const filteredLinks = affiliateLinks.filter((icon) =>
-    icon.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredLinks = affiliateLinks.filter((product) => {
+    const name = `${product.category} | ${product.name}`;
+
+    return name.toLowerCase().includes(search.toLowerCase());
+  });
 
   // 🔄 Apply pagination to filtered results
   const start = page * ITEMS_PER_PAGE;
@@ -39,6 +41,12 @@ export default function Product() {
     window.open(url, "_blank");
   };
 
+  useEffect(() => {
+    if (page >= totalPages) {
+      setPage(0);
+    }
+  }, [filteredLinks, page, totalPages]);
+
   return (
     <div className="mt-4 flex flex-col items-center w-full gap-4">
       {/* Product Card Grid */}
@@ -56,25 +64,9 @@ export default function Product() {
               className="w-24 h-24 rounded-md object-cover mb-2"
             />
             <span className="text-sm font-medium text-gray-700 hover:text-pink-500 transition line-clamp-2">
-              {product.name}
+              {product.category} | {product.name}
             </span>
           </button>
-          // <a
-          //   key={index}
-          //   href={product.url}
-          //   target="_blank"
-          //   rel="noopener noreferrer"
-          //   className="bg-white rounded-xl shadow hover:shadow-lg p-4 flex flex-col items-center text-center transition-all duration-200"
-          // >
-          //   <Image
-          //     src={product.image}
-          //     alt={product.name}
-          //     className="w-16 h-16 rounded-md object-cover mb-2"
-          //   />
-          //   <span className="text-sm font-medium text-gray-700 hover:text-pink-500 transition line-clamp-2">
-          //     {product.name}
-          //   </span>
-          // </a>
         ))}
       </div>
       {/* Pagination Controls */}

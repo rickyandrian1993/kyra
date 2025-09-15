@@ -11,7 +11,9 @@ export default function ShopButtons() {
       </button>
       <button
         className="w-full bg-[#ecebe8] rounded-xl shadow hover:shadow-lg p-2 flex flex-col items-center text-center transition-all duration-200 transform hover:scale-110 hover:cursor-pointer"
-        onClick={() => window.open("url", "_blank")}
+        onClick={() =>
+          window.open("https://www.tokopedia.com/kyraoutwear", "_blank")
+        }
       >
         Tokopedia
       </button>
