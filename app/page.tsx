@@ -2,6 +2,9 @@
 
 import Background from "@/assets/bg.jpg";
 import Avatar from "@/components/Avatar";
+import ContactInformation from "@/components/ContactInformation";
+import Product from "@/components/Product";
+import ShopButtons from "@/components/ShopButtons";
 import Whatsapp from "@/components/Whatsapp";
 
 export default function HomePage() {
@@ -28,9 +31,21 @@ export default function HomePage() {
         backgroundBlendMode: "lighten",
       }}
     >
-      <div className="bg-white/70 backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
+      <div className="bg-[#f4e2d1] backdrop-blur-md rounded-3xl p-6 w-full max-w-md text-center shadow-xl relative">
+        {/* Avatar Section */}
         <Avatar />
+
+        {/* Contact Information Section */}
+        <ContactInformation />
+
+        {/* Shop Buttons Section */}
+        <ShopButtons />
+
+        {/* Product Section */}
+        <Product />
       </div>
+
+      {/* WhatsApp Floating Button */}
       <Whatsapp />
     </div>
   );
